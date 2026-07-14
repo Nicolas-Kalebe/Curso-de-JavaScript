@@ -1,0 +1,46 @@
+<html lang="pt-BR">
+  <head>
+    <title>Booleans</title>
+  </head>
+  <body>
+    <p>Pedra Papel Tesoura</p>
+
+    <button onclick="jogar('Pedra')">Pedra</button>
+    <button onclick="jogar('Papel')">Papel</button>
+    <button onclick="jogar('Tesoura')">Tesoura</button>
+
+    <script>
+      function jogar(escolhaJogador) {
+        const escolhaDoPc = escolhaDoPcDoComp();
+        let resultado = '';
+
+        if (escolhaDoPc === escolhaJogador) {
+          resultado = 'Empatou';
+        } else if (
+          (escolhaJogador === 'Pedra' && escolhaDoPc === 'Tesoura') ||
+          (escolhaJogador === 'Papel' && escolhaDoPc === 'Pedra') ||
+          (escolhaJogador === 'Tesoura' && escolhaDoPc === 'Papel')
+        ) {
+          resultado = 'Ganhou';
+        } else {
+          resultado = 'Perdeu';
+        }
+
+        alert(
+          `Você escolheu ${escolhaJogador}, o PC escolheu ${escolhaDoPc} e o resultado foi que você ${resultado}`,
+        );
+      }
+
+      function escolhaDoPcDoComp() {
+        const numAleatorio = Math.random();
+        if (numAleatorio < 1 / 3) {
+          return 'Pedra';
+        } else if (numAleatorio < 2 / 3) {
+          return 'Papel';
+        } else {
+          return 'Tesoura';
+        }
+      }
+    </script>
+  </body>
+</html>
